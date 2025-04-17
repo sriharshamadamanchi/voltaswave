@@ -173,12 +173,12 @@ export const Dashboard = () => {
           data = {posts ?? []}
           ListEmptyComponent = {
             <View style = {styles.center}>
-              <Label primary xl22 center title =  {strings("noPostsAvailable")}/>
+              <Label primary xl22 center title = {strings("noPostsAvailable")}/>
             </View>
           }
           renderItem = {({ item: post }: { item: PostType }) => {
             return (
-              <>
+              <React.Fragment>
                 <Ripple style = {styles.elipsisStyle} onPress = {() => {
                   setSelectedPost(post)
                   setIsVisible(true)
@@ -197,7 +197,7 @@ export const Dashboard = () => {
                     <Label m title = {post.body.replaceAll("\n", " ")} style = {styles.bodyStyle} numberOfLines = {3} ellipsizeMode = "tail"/>
                   </View>
                 </Card>
-              </>
+              </React.Fragment>
             )
           }}
         />

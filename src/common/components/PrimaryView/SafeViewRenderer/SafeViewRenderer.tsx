@@ -47,12 +47,12 @@ export const SafeViewRenderer = ({ children, safeAreaTopColor, safeAreaBottomCol
   }
 
   return (
-    <>
+    <React.Fragment>
       <SafeAreaView style = {topContinerStyle} />
       <SafeAreaView style = {bottomContainerStyle} >
         {children}
 
       </SafeAreaView>
-    </>
+    </React.Fragment>
   );
 };

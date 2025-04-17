@@ -5,7 +5,7 @@ const en = {
   editComment: "Edit Comment",
   addComment: "Add Comment",
   deleteComment: "Delete Comment",
-  noPostsAvailable:  "No posts available",
+  noPostsAvailable: "No posts available",
   title: "Title",
   body: "Body",
   titlePlaceholder: "Enter Title...",
