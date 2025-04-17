@@ -13,6 +13,7 @@ import { Ripple } from "../common/components/Ripple/Ripple";
 import PlusSVG from "../common/theme/icons/plus.svg"
 import ElipsisSVG from "../common/theme/icons/elipsis.svg"
 import IconCloseSVG from "../common/theme/icons/icon-close.svg"
+import { strings } from "../common/i18n";
 
 const styles = StyleSheet.create({
   container: {
@@ -127,20 +128,22 @@ const Menu = ({ selectedComment, isVisible, onClose }: { selectedComment: Commen
           <IconCloseSVG width = {moderateScale(15)} height = {moderateScale(15)} />
         </Ripple>
         <CurvedButton
+          testID = "editComment"
+          accessibilityLabel = "editComment"
           buttonStyle = { { ...styles.curvedButtonStyle, backgroundColor: theme.colors.background.base } }
-          title = "Edit Comment"
+          title = {strings("editComment")}
           onPress = {() => {
-            navigation.navigate("AddOrEditComment", { comment: selectedComment })
+            navigation.navigate(strings("Routes.addOrEditComment"), { comment: selectedComment })
             onClose()
           }}
         />
 
         <CurvedButton
+          testID = "deleteComment"
+          accessibilityLabel = "deleteComment"
           buttonStyle = { { ...styles.curvedButtonStyle, backgroundColor: theme.colors.font.danger } }
-          title = "Delete Comment"
-          onPress = {() => {
-            onClose()
-          }}
+          title = {strings("deleteComment")}
+          onPress = {onClose}
         />
       </View>
     </Modal>
@@ -178,7 +181,7 @@ export const Comments = ({ route: { params } }: any) => {
       headerRight: () => {
         return (
           <Ripple style = {styles.headerRightStyle} onPress = {() => {
-            navigation.navigate("AddOrEditComment")
+            navigation.navigate(strings("Routes.addOrEditComment"))
           }}>
             <PlusSVG width = {moderateScale(22)} height = {moderateScale(22)} />
           </Ripple>

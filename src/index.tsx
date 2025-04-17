@@ -4,18 +4,18 @@ import { theme } from "./common/theme";
 import { moderateScale } from "react-native-size-matters";
 import { Label } from "./common/components";
 import { Dashboard } from "./Home/Dashboard";
-import { RootStackParamList } from "./common/navigation/types";
 import { Comments } from "./Home/Comments";
 import { AddOrEditComment } from "./Home/AddOrEditComment";
 import { AddOrEditPost } from "./Home/AddOrEditPost";
 import { Platform } from "react-native";
+import { strings } from "./common/i18n";
 
-const Stack = createStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator();
 
 export const Root = () => {
 
   return (
-    <Stack.Navigator initialRouteName = {"Dashboard"}
+    <Stack.Navigator initialRouteName = {strings("Routes.dashboard")}
       screenOptions = { {
         headerTitleAlign: 'center',
         headerBackTitle: "",
@@ -40,34 +40,34 @@ export const Root = () => {
       <Stack.Screen
         options = {(): any => {
           return {
-            title: "Posts"
+            title: strings("Routes.posts")
           };
         }}
-        name = "Dashboard" component = {Dashboard} />
+        name = {strings("Routes.dashboard")} component = {Dashboard} />
 
       <Stack.Screen
         options = {(): any => {
           return {
-            title: "Comments"
+            title: strings("Routes.comments")
           };
         }}
-        name = "Comments" component = {Comments} />
+        name = {strings("Routes.comments")} component = {Comments} />
 
       <Stack.Screen
         options = {(): any => {
           return {
-            title: "AddOrEditComment"
+            title: strings("Routes.addOrEditComment")
           };
         }}
-        name = "AddOrEditComment" component = {AddOrEditComment} />
+        name = {strings("Routes.addOrEditComment")} component = {AddOrEditComment} />
 
       <Stack.Screen
         options = {(): any => {
           return {
-            title: "AddOrEditPost"
+            title: strings("Routes.addOrEditPost")
           };
         }}
-        name = "AddOrEditPost" component = {AddOrEditPost} />
+        name = {strings("Routes.addOrEditPost")} component = {AddOrEditPost} />
     </Stack.Navigator>
   )
 }

@@ -9,6 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 import Utility from "../common/Utility";
 import { loaderSelector } from "../common/loaderRedux/selectors";
 import { addPostAction, updatePostAction } from "./redux/actions";
+import { strings } from "../common/i18n";
 
 const styles = StyleSheet.create({
   container: {
@@ -65,7 +66,7 @@ export const AddOrEditPost = ({ route: { params } }: any) => {
 
   React.useEffect(() => {
     navigation.setOptions({
-      title: isEdit ? "Edit Post" : "Add Post"
+      title: isEdit ? strings("editPost") : strings("addPost")
     })
   }, [navigation, isEdit])
 
@@ -74,26 +75,26 @@ export const AddOrEditPost = ({ route: { params } }: any) => {
       <View style = {styles.container}>
         <LoadingIndicator loading = {addLoading || updateLoading} />
         <View style = {styles.mainContainer}>
-          <Label primary title = "Title" />
+          <Label primary title = {strings("title")} />
           <TextInput
             onChangeText = {(text: string) => setTitle(text)}
             value = {title}
             placeholderTextColor = {theme.colors.textSelectionColor}
             selectionColor = {theme.colors.textSelectionColor}
             multiline = {false}
-            placeholder = {"Enter Title..."}
+            placeholder = {strings("titlePlaceholder")}
             style = {styles.titleTextInputStyle}
           />
         </View>
         <View style = {styles.mainContainer}>
-          <Label primary title = "Body" />
+          <Label primary title = {strings("body")} />
           <TextInput
             onChangeText = {(text: string) => setBody(text)}
             value = {body}
             placeholderTextColor = {theme.colors.textSelectionColor}
             selectionColor = {theme.colors.textSelectionColor}
             multiline
-            placeholder = {"Enter Body..."}
+            placeholder = {strings("bodyPlaceholder")}
             style = {styles.bodyTextInputStyle}
           />
         </View>
@@ -101,7 +102,7 @@ export const AddOrEditPost = ({ route: { params } }: any) => {
         <CurvedButton
           disableButton = {Utility.isEmpty(title) || Utility.isEmpty(body) || updateLoading || addLoading}
           buttonStyle = {styles.curvedButtonStyle}
-          title = "Submit"
+          title = {strings("submit")}
           onPress = {() => {
             if (isEdit) {
               dispatch(updatePostAction({ postId: params.post.id, title, body }))

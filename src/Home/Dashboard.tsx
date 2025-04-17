@@ -13,6 +13,7 @@ import { Ripple } from "../common/components/Ripple/Ripple";
 import PlusSVG from "../common/theme/icons/plus.svg"
 import IconCloseSVG from "../common/theme/icons/icon-close.svg"
 import ElipsisSVG from "../common/theme/icons/elipsis.svg"
+import { strings } from "../common/i18n";
 
 const styles = StyleSheet.create({
   container: {
@@ -103,17 +104,21 @@ const Menu = ({ selectedPost, isVisible, onClose }: { selectedPost: PostType, is
           <IconCloseSVG width = {moderateScale(15)} height = {moderateScale(15)} />
         </Ripple>
         <CurvedButton
+          testID = "editPost"
+          accessibilityLabel = "editPost"
           buttonStyle = { { ...styles.curvedButtonStyle, backgroundColor: theme.colors.background.base } }
-          title = "Edit Post"
+          title = {strings("editPost")}
           onPress = {() => {
-            navigation.navigate("AddOrEditPost", { post: selectedPost })
+            navigation.navigate(strings("Routes.addOrEditPost"), { post: selectedPost })
             onClose()
           }}
         />
 
         <CurvedButton
+          testID = "deletePost"
+          accessibilityLabel = "deletePost"
           buttonStyle = { { ...styles.curvedButtonStyle, backgroundColor: theme.colors.font.danger } }
-          title = "Delete Post"
+          title = {strings("deletePost")}
           onPress = {() => {
             onClose()
             dispatch(deletePostAction({ postId: selectedPost.id }))
@@ -144,7 +149,7 @@ export const Dashboard = () => {
       headerRight: () => {
         return (
           <Ripple style = {styles.headerRightStyle} onPress = {() => {
-            navigation.navigate("AddOrEditPost")
+            navigation.navigate(strings("Routes.addOrEditPost"))
           }}>
             <PlusSVG width = {moderateScale(22)} height = {moderateScale(22)} />
           </Ripple>
@@ -168,7 +173,7 @@ export const Dashboard = () => {
           data = {posts ?? []}
           ListEmptyComponent = {
             <View style = {styles.center}>
-              <Label primary xl22 center title = "No posts available" />
+              <Label primary xl22 center title =  {strings("noPostsAvailable")}/>
             </View>
           }
           renderItem = {({ item: post }: { item: PostType }) => {
@@ -181,7 +186,7 @@ export const Dashboard = () => {
                   <ElipsisSVG width = {moderateScale(22)} height = {moderateScale(22)} />
                 </Ripple>
                 <Card style = {styles.cardStyle} onPress = {() => {
-                  navigation.navigate("Comments", { post })
+                  navigation.navigate(strings("Routes.comments"), { post })
                 }}>
 
                   <View style = {styles.numberStyle}>

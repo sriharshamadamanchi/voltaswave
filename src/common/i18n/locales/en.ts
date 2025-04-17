@@ -1,14 +1,23 @@
 const en = {
-  required: "Required",
-  Login: {
-    enterValidEmail: "Enter a valid email",
-    email: "Email",
-    password: "Password",
-    forgotPassword: "Forgot Password?",
-    dontHaveAnAccount: 'Don\'t have an account?',
-    register: 'Register Here',
-    continue: "Continue",
-    enterValidPhone: 'Enter a valid phone number'
+  editPost: "Edit Post",
+  addPost: "Add Post",
+  deletePost: "Delete Post",
+  editComment: "Edit Comment",
+  addComment: "Add Comment",
+  deleteComment: "Delete Comment",
+  noPostsAvailable:  "No posts available",
+  title: "Title",
+  body: "Body",
+  titlePlaceholder: "Enter Title...",
+  bodyPlaceholder: "Enter Body...",
+  typeHere: "Type Here...",
+  submit: "Submit",
+  Routes: {
+    dashboard: "Dashboard",
+    comments: "Comments",
+    posts: "Posts",
+    addOrEditComment: "AddOrEditComment",
+    addOrEditPost: "AddOrEditPost"
   }
 }
 

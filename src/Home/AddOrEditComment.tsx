@@ -1,13 +1,12 @@
 import React from "react";
 import { StyleSheet, TextInput, View } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
-import { loaderSelector } from "../common/loaderRedux/selectors";
 import { PrimaryView } from "../common/components/PrimaryView/PrimaryView";
 import { moderateScale } from "react-native-size-matters";
 import { theme } from "../common/theme";
 import { useNavigation } from "@react-navigation/native";
 import Utility from "../common/Utility";
 import { CurvedButton } from "../common/components";
+import { strings } from "../common/i18n";
 
 const styles = StyleSheet.create({
   container: {
@@ -38,16 +37,14 @@ const styles = StyleSheet.create({
 
 export const AddOrEditComment = ({ route: { params } }: any) => {
 
-  const dispatch = useDispatch()
   const navigation = useNavigation<any>()
-  const { loading }:{ loading: boolean } = useSelector(loaderSelector("FetchPosts"))
   const [message, setMessage] = React.useState(params?.comment?.body ?? "")
 
   const isEdit = Utility.isNotEmpty(params?.comment)
 
   React.useEffect(() => {
     navigation.setOptions({
-      title: isEdit ? "Edit Comment" : "Add Comment"
+      title: isEdit ? strings("editComment") : strings("addComment")
     })
   }, [navigation, isEdit])
 
@@ -60,16 +57,15 @@ export const AddOrEditComment = ({ route: { params } }: any) => {
           placeholderTextColor = {theme.colors.textSelectionColor}
           selectionColor = {theme.colors.textSelectionColor}
           multiline
-          placeholder = {"Type Here..."}
+          placeholder = {strings("typeHere")}
           style = {styles.textInputStyle}
         />
 
         <CurvedButton
           disableButton = {Utility.isEmpty(message.trim()) || (isEdit && message.trim() === params?.comment?.body)}
           buttonStyle = {styles.curvedButtonStyle}
-          title = "Submit"
-          onPress = {() => {
-          }}
+          title = {strings("submit")}
+          onPress = {() => {}}
         />
       </View>
     </PrimaryView>
