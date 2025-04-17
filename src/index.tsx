@@ -8,6 +8,7 @@ import { RootStackParamList } from "./common/navigation/types";
 import { Comments } from "./Home/Comments";
 import { AddOrEditComment } from "./Home/AddOrEditComment";
 import { AddOrEditPost } from "./Home/AddOrEditPost";
+import { Platform } from "react-native";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -18,9 +19,10 @@ export const Root = () => {
       screenOptions = { {
         headerTitleAlign: 'center',
         headerBackTitle: "",
+        headerTintColor: theme.colors.background.base,
         headerStyle: {
           backgroundColor: theme.colors.background.default,
-          height: moderateScale(50)
+          height: Platform.OS === "android"? moderateScale(50): moderateScale(100),
         },
         headerTitleStyle: {
           fontSize: theme.fontSizes.xl20,
