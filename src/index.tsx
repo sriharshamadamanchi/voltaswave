@@ -22,7 +22,7 @@ export const Root = () => {
         headerTintColor: theme.colors.background.base,
         headerStyle: {
           backgroundColor: theme.colors.background.default,
-          height: Platform.OS === "android"? moderateScale(50): moderateScale(100),
+          height: Platform.OS === "android"? moderateScale(50): moderateScale(100)
         },
         headerTitleStyle: {
           fontSize: theme.fontSizes.xl20,

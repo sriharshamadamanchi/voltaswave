@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, RefreshControl, StyleSheet, View } from "react-native";
+import { Dimensions, FlatList, RefreshControl, StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { loaderSelector } from "../common/loaderRedux/selectors";
 import { PrimaryView } from "../common/components/PrimaryView/PrimaryView";
@@ -17,6 +17,11 @@ import ElipsisSVG from "../common/theme/icons/elipsis.svg"
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  center: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: Dimensions.get("window").height
   },
   flatListStyle: {
     paddingHorizontal: moderateScale(20)
@@ -160,7 +165,12 @@ export const Dashboard = () => {
               dispatch(fetchPostsAction())
             }} />}
           style = {styles.flatListStyle}
-          data = {posts}
+          data = {posts ?? []}
+          ListEmptyComponent = {
+            <View style = {styles.center}>
+              <Label primary xl22 center title = "No posts available" />
+            </View>
+          }
           renderItem = {({ item: post }: { item: PostType }) => {
             return (
               <>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StatusBar, StyleSheet, View } from 'react-native';
 import { ActivityIndicator, Portal } from 'react-native-paper';
 import { moderateScale } from 'react-native-size-matters';
 import { theme } from '../../theme';
@@ -31,6 +31,7 @@ export const LoadingIndicator = ({ loading, color = theme.colors.background.blac
   if (loading) {
     return (
       <Portal>
+        <StatusBar barStyle = "light-content" backgroundColor = {"#0000004A"} />
         <View style = {styles.container}>
           <View style = {styles.background} />
           <ActivityIndicator size = {size} animating = {loading} color = {color} hidesWhenStopped = {true} />
